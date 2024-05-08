@@ -12,6 +12,7 @@ impl ListNode {
         ListNode { next: None, val }
     }
 }
+
 impl Solution {
     pub fn double_it(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut dummy = ListNode { val: 0, next: head };
