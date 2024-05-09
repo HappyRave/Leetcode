@@ -29,13 +29,7 @@ mod tests {
 
     #[test]
     fn test_is_palindrome_list() {
-        assert_eq!(
-            Solution::is_palindrome_list(vec![1, 2, 2, 1].into_list()),
-            true
-        );
-        assert_eq!(
-            Solution::is_palindrome_list(vec![1, 2, 3, 1].into_list()),
-            false
-        );
+        assert!(Solution::is_palindrome_list(vec![1, 2, 2, 1].into_list()));
+        assert!(!Solution::is_palindrome_list(vec![1, 2, 3, 1].into_list()));
     }
 }
