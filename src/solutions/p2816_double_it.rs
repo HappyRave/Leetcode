@@ -1,17 +1,4 @@
-use super::Solution;
-
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
-
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+use super::{ListNode, Solution};
 
 impl Solution {
     pub fn double_it(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -37,37 +24,23 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use crate::solutions::ListExt;
+
     use super::*;
 
     #[test]
     fn test_double_it() {
-        let mut list = ListNode::new(1);
-        list.next = Some(Box::new(ListNode::new(8)));
-        list.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(9)));
-
-        let result = Solution::double_it(Some(Box::new(list)));
-
-        let mut expected = ListNode::new(3);
-        expected.next = Some(Box::new(ListNode::new(7)));
-        expected.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(8)));
-
-        assert_eq!(result, Some(Box::new(expected)));
+        let list = vec![1, 8, 9].into_list();
+        let expected = vec![3, 7, 8].into_list();
+        let result = Solution::double_it(list);
+        assert_eq!(result, expected);
     }
 
     #[test]
     fn test_double_it_2() {
-        let mut list = ListNode::new(9);
-        list.next = Some(Box::new(ListNode::new(9)));
-        list.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(9)));
-
-        let result = Solution::double_it(Some(Box::new(list)));
-
-        let mut expected = ListNode::new(1);
-        expected.next = Some(Box::new(ListNode::new(9)));
-        expected.next.as_mut().unwrap().next = Some(Box::new(ListNode::new(9)));
-        expected.next.as_mut().unwrap().next.as_mut().unwrap().next =
-            Some(Box::new(ListNode::new(8)));
-
-        assert_eq!(result, Some(Box::new(expected)));
+        let list = vec![9, 9, 9].into_list();
+        let expected = vec![1, 9, 9, 8].into_list();
+        let result = Solution::double_it(list);
+        assert_eq!(result, expected);
     }
 }

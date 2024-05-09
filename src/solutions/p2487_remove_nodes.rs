@@ -1,17 +1,4 @@
-use super::Solution;
-
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
-
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+use super::{ListNode, Solution};
 
 impl Solution {
     pub fn remove_nodes(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -30,31 +17,15 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use crate::solutions::ListExt;
+
     use super::*;
 
     #[test]
     fn test_remove_nodes() {
-        // [5,2,13,3,8]
-        let node8 = ListNode::new(8);
-        let mut node3 = ListNode::new(3);
-        node3.next = Some(Box::new(node8));
-        let mut node13 = ListNode::new(13);
-        node13.next = Some(Box::new(node3));
-        let mut node2 = ListNode::new(2);
-        node2.next = Some(Box::new(node13));
-        let mut node5 = ListNode::new(5);
-        node5.next = Some(Box::new(node2));
-
-        let head = node5;
-
-        // [13,8]
-        let node8 = ListNode::new(8);
-        let mut node13 = ListNode::new(13);
-        node13.next = Some(Box::new(node8));
-
-        let solution = node13;
-
-        let result = Solution::remove_nodes(Some(Box::new(head)));
-        assert_eq!(*result.unwrap().as_ref(), solution);
+        let head = vec![5, 2, 13, 3, 8].into_list();
+        let solution = vec![13, 8].into_list();
+        let result = Solution::remove_nodes(head);
+        assert_eq!(result, solution);
     }
 }
