@@ -1,4 +1,6 @@
-use super::{ListNode, Solution};
+use crate::solutions::Solution;
+
+use super::ListNode;
 
 impl Solution {
     pub fn remove_nodes(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -17,7 +19,8 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::ListExt;
+
+    use crate::solutions::linked_lists::ListExt;
 
     use super::*;
 

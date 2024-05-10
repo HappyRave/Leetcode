@@ -1,4 +1,6 @@
-use super::{ListNode, Solution};
+use crate::solutions::Solution;
+
+use super::ListNode;
 
 impl Solution {
     pub fn is_palindrome_list(head: Option<Box<ListNode>>) -> bool {
@@ -23,7 +25,8 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::ListExt;
+
+    use crate::solutions::linked_lists::ListExt;
 
     use super::*;
 
