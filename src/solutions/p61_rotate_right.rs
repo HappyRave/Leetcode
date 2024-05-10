@@ -2,12 +2,22 @@ use super::{ListNode, Solution};
 
 impl Solution {
     pub fn rotate_right(head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
-        if let Some(mut node) = head {
-            let k = k - 1;
-            Self::rotate_right(node.next, k)
-        } else {
-            None
+        let mut values = Vec::new();
+        let mut current = &head;
+        while let Some(node) = current {
+            values.push(node.val);
+            current = &node.next;
         }
+        let mut solution = None;
+        for i in (0..values.len()).rev() {
+            let k = k % values.len() as i32;
+            let mut node = Box::new(ListNode::new(
+                values[(i + values.len() - k as usize) % values.len()],
+            ));
+            node.next = solution;
+            solution = Some(node);
+        }
+        solution
     }
 }
 
