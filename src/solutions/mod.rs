@@ -1,5 +1,6 @@
 pub mod binary_search;
 pub mod linked_lists;
+pub mod matrix;
 pub mod p13_roman_to_int;
 pub mod p2659_count_operations_to_empty_array;
 pub mod p3075_maximum_happiness_sum;
