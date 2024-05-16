@@ -8,4 +8,6 @@ pub mod p3075_maximum_happiness_sum;
 pub mod p506_find_relative_rank;
 pub mod p786_kth_smallest_prime_fraction;
 pub mod p9_is_palindrome;
+pub mod binary_tree;
+
 pub struct Solution;
