@@ -2,6 +2,7 @@ use std::{cell::RefCell, rc::Rc};
 
 pub mod p1325_remove_leaf_nodes;
 pub mod p2331_evaluate_tree;
+pub mod p979_distribute_coins;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
