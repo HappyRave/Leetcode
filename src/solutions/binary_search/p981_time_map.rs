@@ -21,7 +21,7 @@ impl TimeMap {
     }
 
     fn set(&mut self, key: String, value: String, timestamp: i32) {
-        let map = self.map.entry(key).or_insert(BTreeMap::new());
+        let map = self.map.entry(key).or_default();
         map.insert(timestamp, value);
     }
 
