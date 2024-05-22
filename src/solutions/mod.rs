@@ -1,3 +1,4 @@
+pub mod array;
 pub mod binary_search;
 pub mod binary_tree;
 pub mod linked_lists;
