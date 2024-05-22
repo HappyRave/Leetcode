@@ -1,4 +1,4 @@
-use super::Solution;
+use crate::solutions::Solution;
 
 impl Solution {
     pub fn count_operations_to_empty_array(mut nums: Vec<i32>) -> i64 {
