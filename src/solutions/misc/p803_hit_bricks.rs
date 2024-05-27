@@ -40,89 +40,82 @@ impl UnionFind {
 
 impl Solution {
     pub fn hit_bricks(grid: Vec<Vec<i32>>, hits: Vec<Vec<i32>>) -> Vec<i32> {
-        let m = grid.len();
-        let n = grid[0].len();
+        let rows = grid.len();
+        let cols = grid[0].len();
         let mut grid = grid;
-        let mut uf = UnionFind::new(m * n + 1);
-        let top = m * n;
+        let mut union_find = UnionFind::new(rows * cols + 1);
+        let top = rows * cols;
 
+        // Mark the bricks to be hit
         for hit in &hits {
-            grid[hit[0] as usize][hit[1] as usize] -= 1;
+            let (hit_row, hit_col) = (hit[0] as usize, hit[1] as usize);
+            if grid[hit_row][hit_col] == 1 {
+                grid[hit_row][hit_col] = -1;
+            }
         }
 
-        for i in 0..m {
-            for j in 0..n {
-                if grid[i][j] == 1 {
-                    if i == 0 {
-                        uf.union(i * n + j, top);
+        // Union the bricks
+        for row in 0..rows {
+            for col in 0..cols {
+                if grid[row][col] == 1 {
+                    let index = row * cols + col;
+                    if row == 0 {
+                        union_find.union(col, top);
                     }
-                    if i > 0 && grid[i - 1][j] == 1 {
-                        uf.union(i * n + j, (i - 1) * n + j);
+                    if row > 0 && grid[row - 1][col] == 1 {
+                        union_find.union(index, (row - 1) * cols + col);
                     }
-                    if j > 0 && grid[i][j - 1] == 1 {
-                        uf.union(i * n + j, i * n + j - 1);
+                    if col > 0 && grid[row][col - 1] == 1 {
+                        union_find.union(index, row * cols + col - 1);
                     }
                 }
             }
         }
 
-        let mut res = vec![0; hits.len()];
-        let dirs = vec![(0, 1), (1, 0), (0, -1), (-1, 0)];
+        let mut results = vec![0; hits.len()];
+        let directions = vec![(0, 1), (1, 0), (0, -1), (-1, 0)];
 
+        // Reverse the hits
         for k in (0..hits.len()).rev() {
-            let i = hits[k][0] as usize;
-            let j = hits[k][1] as usize;
+            let (hit_row, hit_col) = (hits[k][0] as usize, hits[k][1] as usize);
 
-            if grid[i][j] == 0 {
-                grid[i][j] = 1;
-                if i == 0 {
-                    uf.union(i * n + j, top);
+            if grid[hit_row][hit_col] == -1 {
+                grid[hit_row][hit_col] = 1;
+                let index = hit_row * cols + hit_col;
+
+                let parent = union_find.find(top);
+                let previous_size = union_find.size[parent];
+
+                if hit_row == 0 {
+                    union_find.union(hit_col, top);
                 }
 
-                for dir in &dirs {
-                    let x = i as isize + dir.0;
-                    let y = j as isize + dir.1;
+                // Union the hit brick with its neighbors
+                for direction in &directions {
+                    let (new_row, new_col) = (
+                        hit_row as isize + direction.0,
+                        hit_col as isize + direction.1,
+                    );
 
-                    if x >= 0 && x < m as isize && y >= 0 && y < n as isize {
-                        let x = x as usize;
-                        let y = y as usize;
-                        if grid[x][y] == 1 {
-                            uf.union(i * n + j, x * n + y);
+                    if new_row >= 0
+                        && new_row < rows as isize
+                        && new_col >= 0
+                        && new_col < cols as isize
+                    {
+                        let (new_row, new_col) = (new_row as usize, new_col as usize);
+                        if grid[new_row][new_col] == 1 {
+                            union_find.union(index, new_row * cols + new_col);
                         }
                     }
                 }
 
-                let size = uf.size.clone();
-                let find = uf.find(i * n + j);
-                res[k] = size[find] - 1;
+                let parent = union_find.find(top);
+                let size = union_find.size[parent];
+                results[k] = 0.max(size as i32 - previous_size as i32 - 1);
             }
         }
 
-        res.iter().map(|&x| x as i32).collect()
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_hit_bricks() {
-        assert_eq!(
-            Solution::hit_bricks(vec![vec![1, 0, 0, 0], vec![1, 1, 1, 0]], vec![vec![1, 0]]),
-            vec![2]
-        );
-    }
-
-    #[test]
-    fn test_hit_bricks_2() {
-        assert_eq!(
-            Solution::hit_bricks(
-                vec![vec![1, 0, 0, 0], vec![1, 1, 0, 0]],
-                vec![vec![1, 1], vec![1, 0]]
-            ),
-            vec![0, 0]
-        );
+        results
     }
 }
 
@@ -224,5 +217,40 @@ impl SolutionSlow {
                 }
             })
             .collect::<Vec<i32>>()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_hit_bricks() {
+        assert_eq!(
+            Solution::hit_bricks(vec![vec![1, 0, 0, 0], vec![1, 1, 1, 0]], vec![vec![1, 0]]),
+            vec![2]
+        );
+    }
+
+    #[test]
+    fn test_hit_bricks_2() {
+        assert_eq!(
+            Solution::hit_bricks(
+                vec![vec![1, 0, 0, 0], vec![1, 1, 0, 0]],
+                vec![vec![1, 1], vec![1, 0]]
+            ),
+            vec![0, 0]
+        );
+    }
+
+    #[test]
+    fn test_hit_bricks_3() {
+        assert_eq!(
+            Solution::hit_bricks(
+                vec![vec![1, 1, 1], vec![0, 1, 0], vec![0, 0, 0]],
+                vec![vec![0, 2], vec![2, 0], vec![0, 1], vec![1, 2]]
+            ),
+            vec![0, 0, 1, 0]
+        );
     }
 }
