@@ -3,7 +3,7 @@ use crate::solutions::Solution;
 impl Solution {
     pub fn special_array(nums: Vec<i32>) -> i32 {
         let mut nums = nums;
-        //nums.sort_unstable();
+        nums.sort_unstable();
         let n = nums.len() as i32;
         for i in 1..=n {
             if nums.iter().filter(|&&x| x >= i).count() == i as usize {
