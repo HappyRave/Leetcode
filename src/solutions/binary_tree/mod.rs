@@ -3,6 +3,7 @@ use std::{cell::RefCell, rc::Rc};
 pub mod p1325_remove_leaf_nodes;
 pub mod p2331_evaluate_tree;
 pub mod p979_distribute_coins;
+pub mod p993_is_cousins;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -28,24 +29,27 @@ trait BinaryTreeExt {
 
 impl BinaryTreeExt for Vec<Option<i32>> {
     fn into_tree(self) -> Option<Rc<RefCell<TreeNode>>> {
-        fn helper(
-            tree: &mut Vec<Option<i32>>,
-            index: usize,
-            index_multiplier: usize,
-        ) -> Option<Rc<RefCell<TreeNode>>> {
-            if index >= tree.len() {
-                return None;
-            }
-            if let Some(val) = tree[index] {
-                let mut node = TreeNode::new(val);
-                node.left = helper(tree, index_multiplier * index + 1, 2);
-                let multiplier = if node.left.is_some() { 2 } else { 1 };
-                node.right = helper(tree, index_multiplier * index + 2, multiplier);
-                return Some(Rc::new(RefCell::new(node)));
-            }
-            None
+        let mut iter = self.into_iter();
+        let root = iter
+            .next()
+            .and_then(|val| val.map(|val| Rc::new(RefCell::new(TreeNode::new(val)))));
+        let mut queue = std::collections::VecDeque::new();
+        if let Some(root) = root.as_ref() {
+            queue.push_back(Rc::clone(root));
         }
-        helper(&mut self.clone(), 0, 2)
+        while let Some(node) = queue.pop_front() {
+            if let Some(val) = iter.next().and_then(|v| v) {
+                let left = Rc::new(RefCell::new(TreeNode::new(val)));
+                node.borrow_mut().left = Some(Rc::clone(&left));
+                queue.push_back(left);
+            }
+            if let Some(val) = iter.next().and_then(|v| v) {
+                let right = Rc::new(RefCell::new(TreeNode::new(val)));
+                node.borrow_mut().right = Some(Rc::clone(&right));
+                queue.push_back(right);
+            }
+        }
+        root
     }
 }
 
@@ -199,6 +203,102 @@ mod tests {
                 .borrow()
                 .val,
             4
+        );
+    }
+
+    #[test]
+    fn test_tree_node_5() {
+        let tree = vec![Some(1), Some(2), Some(3), None, Some(4), None, Some(5)];
+        let root = tree.into_tree();
+        assert_eq!(root.as_ref().unwrap().borrow().val, 1);
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .left
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .val,
+            2
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .val,
+            3
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .left
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .left,
+            None
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .left
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .val,
+            4
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .left
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .right,
+            None
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .left,
+            None
+        );
+        assert_eq!(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .unwrap()
+                .borrow()
+                .val,
+            5
         );
     }
 }
