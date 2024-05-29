@@ -5,6 +5,7 @@ pub mod p154_find_min_with_duplicates;
 pub mod p33_search_rotated;
 pub mod p34_search_range;
 pub mod p35_search_insert;
+pub mod p374_guess_number;
 pub mod p436_find_right_interval;
 pub mod p704_search;
 pub mod p744_next_greatest_letter;
