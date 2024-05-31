@@ -6,12 +6,12 @@ impl Solution {
         let n = arr.len();
         for i in 0..n {
             let mut sum = arr[i];
-            for j in (i + 1)..n {
+            ((i + 1)..n).for_each(|j| {
                 sum ^= arr[j];
                 if sum == 0 {
                     res += j - i;
                 }
-            }
+            });
         }
         res as i32
     }

@@ -1,6 +1,7 @@
 pub mod p1208_equal_substring;
 pub mod p13_roman_to_int;
 pub mod p1404_num_steps;
+pub mod p260_single_number;
 pub mod p2729_is_fascinating;
 pub mod p552_check_record;
 pub mod p803_hit_bricks;
