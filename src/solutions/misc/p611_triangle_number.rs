@@ -2,19 +2,21 @@ use crate::solutions::Solution;
 
 impl Solution {
     pub fn triangle_number(mut nums: Vec<i32>) -> i32 {
-        if nums.len() < 3 {
-            return 0;
-        }
         nums.sort();
         let mut count = 0;
-        (0..nums.len() - 2).for_each(|i| {
-            (i + 1..nums.len() - 1).for_each(|j| {
-                let side = nums[i] + nums[j];
-                let shorter = nums[j + 1..].partition_point(|&x| x < side);
-                count += shorter as i32;
-            });
-        });
-        count
+        for k in (2..nums.len()).rev() {
+            let mut i = 0;
+            let mut j = k - 1;
+            while i < j {
+                if nums[i] + nums[j] > nums[k] {
+                    count += j - i;
+                    j -= 1;
+                } else {
+                    i += 1;
+                }
+            }
+        }
+        count as i32
     }
 }
 
@@ -43,7 +45,15 @@ mod tests {
     }
 
     #[test]
-    fn test_triangle_number_() {
+    fn test_triangle_number_5() {
         assert_eq!(Solution::triangle_number(vec![0]), 0);
+    }
+
+    #[test]
+    fn test_triangle_number_6() {
+        assert_eq!(
+            Solution::triangle_number(vec![24, 3, 82, 22, 35, 84, 19]),
+            10
+        );
     }
 }
