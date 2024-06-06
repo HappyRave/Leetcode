@@ -7,6 +7,7 @@ pub mod p14_longest_common_prefix;
 pub mod p1608_special_array;
 pub mod p1944_can_see_persons_count;
 pub mod p2225_find_winners;
+pub mod p2255_count_prefixes;
 pub mod p2659_count_operations_to_empty_array;
 pub mod p3075_maximum_happiness_sum;
 pub mod p344_reverse_string;
