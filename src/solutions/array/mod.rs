@@ -15,3 +15,4 @@ pub mod p506_find_relative_rank;
 pub mod p769_max_chunks_to_sorted;
 pub mod p786_kth_smallest_prime_fraction;
 pub mod p813_largest_sum_of_averages;
+pub mod p846_is_n_straight_hand;
