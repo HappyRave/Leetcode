@@ -13,6 +13,7 @@ pub mod p3075_maximum_happiness_sum;
 pub mod p344_reverse_string;
 pub mod p409_longest_palindrome;
 pub mod p506_find_relative_rank;
+pub mod p648_replace_words;
 pub mod p769_max_chunks_to_sorted;
 pub mod p786_kth_smallest_prime_fraction;
 pub mod p813_largest_sum_of_averages;
