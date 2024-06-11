@@ -1,6 +1,7 @@
 pub mod p1002_common_chars;
 pub mod p1051_height_checker;
 pub mod p1105_min_height_shelves;
+pub mod p1122_relative_sort_array;
 pub mod p1219_get_maximum_gold;
 pub mod p1255_max_score_words;
 pub mod p140_word_break;
