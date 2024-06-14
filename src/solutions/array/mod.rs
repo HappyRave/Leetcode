@@ -22,4 +22,5 @@ pub mod p769_max_chunks_to_sorted;
 pub mod p786_kth_smallest_prime_fraction;
 pub mod p813_largest_sum_of_averages;
 pub mod p846_is_n_straight_hand;
+pub mod p945_min_increment_for_unique;
 pub mod p974_subarrays_div_by_k;
