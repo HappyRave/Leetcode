@@ -15,6 +15,7 @@ pub mod p2659_count_operations_to_empty_array;
 pub mod p3075_maximum_happiness_sum;
 pub mod p344_reverse_string;
 pub mod p409_longest_palindrome;
+pub mod p502_find_maximized_capital;
 pub mod p506_find_relative_rank;
 pub mod p523_check_subarray_sum;
 pub mod p648_replace_words;
