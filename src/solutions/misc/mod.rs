@@ -6,6 +6,7 @@ pub mod p2729_is_fascinating;
 pub mod p3110_score_of_string;
 pub mod p552_check_record;
 pub mod p611_triangle_number;
+pub mod p633_judge_square_sum;
 pub mod p803_hit_bricks;
 pub mod p844_backspace_compare;
 pub mod p868_binary_gap;
