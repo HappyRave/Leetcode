@@ -11,4 +11,5 @@ pub mod p436_find_right_interval;
 pub mod p704_search;
 pub mod p744_next_greatest_letter;
 pub mod p74_search_matrix;
+pub mod p826_max_profit_assignment;
 pub mod p981_time_map;
