@@ -7,6 +7,7 @@ pub mod p1255_max_score_words;
 pub mod p140_word_break;
 pub mod p1482_min_days;
 pub mod p14_longest_common_prefix;
+pub mod p1552_max_distance;
 pub mod p1608_special_array;
 pub mod p1944_can_see_persons_count;
 pub mod p2037_min_moves_to_seat;
