@@ -7,6 +7,7 @@ pub mod p1219_get_maximum_gold;
 pub mod p1248_number_of_subarrays;
 pub mod p1255_max_score_words;
 pub mod p140_word_break;
+pub mod p1438_longest_subarray;
 pub mod p1482_min_days;
 pub mod p14_longest_common_prefix;
 pub mod p1552_max_distance;
