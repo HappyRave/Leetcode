@@ -1,11 +1,12 @@
 use std::{cell::RefCell, rc::Rc};
 
 pub mod p1325_remove_leaf_nodes;
+pub mod p1382_balance_bst;
 pub mod p2331_evaluate_tree;
 pub mod p979_distribute_coins;
 pub mod p993_is_cousins;
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,
@@ -20,6 +21,75 @@ impl TreeNode {
             left: None,
             right: None,
         }
+    }
+
+    fn is_balanced(&self) -> bool {
+        fn height(node: &Option<Rc<RefCell<TreeNode>>>) -> i32 {
+            match node {
+                Some(node) => {
+                    let node = node.borrow();
+                    let left = height(&node.left);
+                    let right = height(&node.right);
+                    if left == -1 || right == -1 || (left - right).abs() > 1 {
+                        -1
+                    } else {
+                        1 + left.max(right)
+                    }
+                }
+                None => 0,
+            }
+        }
+        height(&Some(Rc::new(RefCell::new(self.clone())))) != -1
+    }
+
+    fn is_search_tree(&self) -> bool {
+        fn is_valid(node: &Option<Rc<RefCell<TreeNode>>>, min: i64, max: i64) -> bool {
+            match node {
+                Some(node) => {
+                    let node = node.borrow();
+                    let val = node.val as i64;
+                    if val <= min || val >= max {
+                        return false;
+                    }
+                    is_valid(&node.left, min, val) && is_valid(&node.right, val, max)
+                }
+                None => true,
+            }
+        }
+        is_valid(
+            &Some(Rc::new(RefCell::new(self.clone()))),
+            i64::MIN,
+            i64::MAX,
+        )
+    }
+
+    fn pretty_print(&self) {
+        fn pretty_print(node: &Option<Rc<RefCell<TreeNode>>>, prefix: String, is_left: bool) {
+            if let Some(node) = node {
+                let node = node.borrow();
+                println!(
+                    "{}{}{}",
+                    prefix,
+                    if is_left { "├── " } else { "└── " },
+                    node.val
+                );
+                pretty_print(
+                    &node.left,
+                    format!("{}{}", prefix, if is_left { "│   " } else { "    " }),
+                    true,
+                );
+                pretty_print(
+                    &node.right,
+                    format!("{}{}", prefix, if is_left { "│   " } else { "    " }),
+                    false,
+                );
+            }
+        }
+        pretty_print(
+            &Some(Rc::new(RefCell::new(self.clone()))),
+            "".to_string(),
+            false,
+        );
     }
 }
 
@@ -300,5 +370,50 @@ mod tests {
                 .val,
             5
         );
+    }
+
+    #[test]
+    fn test_tree_node_is_balanced() {
+        let tree = vec![Some(3), Some(9), Some(20), None, None, Some(15), Some(7)];
+        let root = tree.into_tree();
+        assert!(root.as_ref().unwrap().borrow().is_balanced());
+    }
+
+    #[test]
+    fn test_tree_node_is_balanced_2() {
+        let tree = vec![
+            Some(1),
+            Some(2),
+            Some(2),
+            Some(3),
+            Some(3),
+            None,
+            None,
+            Some(4),
+            Some(4),
+        ];
+        let root = tree.into_tree();
+        assert!(!root.as_ref().unwrap().borrow().is_balanced());
+    }
+
+    #[test]
+    fn test_tree_node_is_balanced_3() {
+        let tree = vec![Some(1)];
+        let root = tree.into_tree();
+        assert!(root.as_ref().unwrap().borrow().is_balanced());
+    }
+
+    #[test]
+    fn test_tree_node_is_search_tree() {
+        let tree = vec![Some(2), Some(1), Some(3)];
+        let root = tree.into_tree();
+        assert!(root.as_ref().unwrap().borrow().is_search_tree());
+    }
+
+    #[test]
+    fn test_tree_node_is_search_tree_2() {
+        let tree = vec![Some(5), Some(1), Some(4), None, None, Some(3), Some(6)];
+        let root = tree.into_tree();
+        assert!(!root.as_ref().unwrap().borrow().is_search_tree());
     }
 }
