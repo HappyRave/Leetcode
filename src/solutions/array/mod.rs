@@ -17,6 +17,7 @@ pub mod p2037_min_moves_to_seat;
 pub mod p2225_find_winners;
 pub mod p2255_count_prefixes;
 pub mod p2659_count_operations_to_empty_array;
+pub mod p2932_maximum_strong_pair_xor;
 pub mod p3075_maximum_happiness_sum;
 pub mod p330_min_patches;
 pub mod p344_reverse_string;
