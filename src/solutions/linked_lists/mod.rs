@@ -1,3 +1,4 @@
+pub mod p2058_nodes_between_critical_points;
 pub mod p2181_merge_nodes;
 pub mod p234_is_palindrome_list;
 pub mod p2487_remove_nodes;
