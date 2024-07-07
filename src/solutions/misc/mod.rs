@@ -1,6 +1,7 @@
 pub mod p1208_equal_substring;
 pub mod p13_roman_to_int;
 pub mod p1404_num_steps;
+pub mod p1518_num_water_bottles;
 pub mod p1550_three_consecutive_odds;
 pub mod p2582_pass_the_pillow;
 pub mod p260_single_number;
