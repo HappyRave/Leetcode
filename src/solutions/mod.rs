@@ -7,6 +7,7 @@ pub mod matrix;
 pub mod misc;
 pub mod simulation;
 pub mod stack;
+pub mod string;
 pub mod subset;
 pub mod tree;
 
