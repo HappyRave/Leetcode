@@ -20,7 +20,7 @@ mod tests {
 
     #[test]
     fn test_check_string() {
-        let s = "aabb".to_string();
+        let s = "aabb".to_string(); // cspell: disable-line
         assert!(Solution::check_string(s));
     }
 
