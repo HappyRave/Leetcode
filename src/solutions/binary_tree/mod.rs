@@ -3,6 +3,7 @@ use std::{cell::RefCell, rc::Rc};
 pub mod p1038_bst_to_gst;
 pub mod p1325_remove_leaf_nodes;
 pub mod p1382_balance_bst;
+pub mod p2096_get_directions;
 pub mod p2196_create_binary_tree;
 pub mod p2331_evaluate_tree;
 pub mod p979_distribute_coins;
