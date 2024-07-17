@@ -1,6 +1,7 @@
 use std::{cell::RefCell, rc::Rc};
 
 pub mod p1038_bst_to_gst;
+pub mod p1110_del_nodes;
 pub mod p1325_remove_leaf_nodes;
 pub mod p1382_balance_bst;
 pub mod p2096_get_directions;
@@ -24,6 +25,20 @@ impl TreeNode {
             left: None,
             right: None,
         }
+    }
+
+    pub fn tree_size(node: &Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        match node {
+            Some(node) => {
+                let node = node.borrow();
+                1 + Self::tree_size(&node.left) + Self::tree_size(&node.right)
+            }
+            None => 0,
+        }
+    }
+
+    fn size(&self) -> i32 {
+        Self::tree_size(&Some(Rc::new(RefCell::new(self.clone()))))
     }
 
     fn is_balanced(&self) -> bool {
