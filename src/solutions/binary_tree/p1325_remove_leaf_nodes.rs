@@ -30,34 +30,32 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
-
     use super::*;
 
     #[test]
-    fn test_1() {
-        let tree = vec![Some(1), Some(2), Some(3), Some(2), None, Some(2), Some(4)];
-        let root = tree.into_tree();
-        let target = 2;
-        let res = vec![Some(1), None, Some(3), None, Some(4)];
-        assert_eq!(Solution::remove_leaf_nodes(root, target), res.into_tree());
+    fn test_remove_leaf_nodes() {
+        let tree = TreeNode::from_string("1,2,3,2,null,2,4");
+        assert_eq!(
+            Solution::remove_leaf_nodes(tree, 2),
+            TreeNode::from_string("1,null,3,null,4")
+        );
     }
 
     #[test]
-    fn test_2() {
-        let tree = vec![Some(1), Some(3), Some(3), Some(3), Some(2)];
-        let root = tree.into_tree();
-        let target = 3;
-        let res = vec![Some(1), Some(3), None, None, Some(2)];
-        assert_eq!(Solution::remove_leaf_nodes(root, target), res.into_tree());
+    fn test_remove_leaf_nodes_2() {
+        let tree = TreeNode::from_string("1,3,3,3,2");
+        assert_eq!(
+            Solution::remove_leaf_nodes(tree, 3),
+            TreeNode::from_string("1,3,null,null,2")
+        );
     }
 
     #[test]
-    fn test_3() {
-        let tree = vec![Some(1), Some(2), None, Some(2), None, Some(2)];
-        let root = tree.into_tree();
-        let target = 2;
-        let res = vec![Some(1)];
-        assert_eq!(Solution::remove_leaf_nodes(root, target), res.into_tree());
+    fn test_remove_leaf_nodes_3() {
+        let tree = TreeNode::from_string("1,2,null,2,null,2");
+        assert_eq!(
+            Solution::remove_leaf_nodes(tree, 2),
+            TreeNode::from_string("1")
+        );
     }
 }

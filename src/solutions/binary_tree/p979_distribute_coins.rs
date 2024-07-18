@@ -25,21 +25,17 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
-
     use super::*;
 
     #[test]
     fn test_distribute_coins() {
-        let tree = vec![Some(3), Some(0), Some(0)];
-        let root = tree.into_tree();
-        assert_eq!(Solution::distribute_coins(root), 2);
+        let tree = TreeNode::from_string("3,0,0");
+        assert_eq!(Solution::distribute_coins(tree), 2);
     }
 
     #[test]
     fn test_distribute_coins_2() {
-        let tree = vec![Some(0), Some(3), Some(0)];
-        let root = tree.into_tree();
-        assert_eq!(Solution::distribute_coins(root), 3);
+        let tree = TreeNode::from_string("0,3,0");
+        assert_eq!(Solution::distribute_coins(tree), 3);
     }
 }

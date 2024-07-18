@@ -35,7 +35,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
+    use crate::solutions::binary_tree::OptionTreeNodeExt;
 
     use super::*;
 
@@ -46,37 +46,26 @@ mod tests {
 
     #[test]
     fn test_balance_bst_2() {
-        let tree = vec![
-            Some(1),
-            None,
-            Some(2),
-            None,
-            Some(3),
-            None,
-            Some(4),
-            None,
-            None,
-        ]
-        .into_tree();
+        let tree = TreeNode::from_string("1,null,2,null,3,null,4,null,null");
         let result = Solution::balance_bst(tree);
-        assert!(result.clone().unwrap().borrow().is_balanced());
-        assert!(result.unwrap().borrow().is_search_tree());
+        assert!(result.is_balanced());
+        assert!(result.is_search_tree());
     }
 
     #[test]
     fn test_balance_bst_3() {
-        let tree = vec![Some(2), None, Some(1), None, Some(3)].into_tree();
-        let result = Solution::balance_bst(tree.clone());
-        assert!(result.clone().unwrap().borrow().is_balanced());
-        assert!(result.clone().unwrap().borrow().is_search_tree());
+        let tree = TreeNode::from_string("2,null,1,null,3");
+        let result = Solution::balance_bst(tree);
+        assert!(result.is_balanced());
+        assert!(result.is_search_tree());
     }
 
     #[test]
     fn test_balance_bst_4() {
-        let tree = vec![Some(2), Some(1), Some(3)].into_tree();
+        let tree = TreeNode::from_string("2,1,3");
         let result = Solution::balance_bst(tree.clone());
-        assert!(result.clone().unwrap().borrow().is_balanced());
-        assert!(result.clone().unwrap().borrow().is_search_tree());
+        assert!(result.is_balanced());
+        assert!(result.is_search_tree());
         assert_eq!(tree, result);
     }
 }

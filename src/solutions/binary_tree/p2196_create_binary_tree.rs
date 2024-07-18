@@ -95,8 +95,6 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
-
     use super::*;
 
     #[test]
@@ -108,7 +106,7 @@ mod tests {
             vec![50, 80, 0],
             vec![80, 19, 1],
         ];
-        let answer = vec![Some(50), Some(20), Some(80), Some(15), Some(17), Some(19)].into_tree();
+        let answer = TreeNode::from_string("50,20,80,15,17,19");
         let solution = Solution::create_binary_tree(descriptions);
         assert_eq!(solution, answer);
     }
@@ -116,7 +114,7 @@ mod tests {
     #[test]
     fn test_create_binary_tree_2() {
         let descriptions = vec![vec![1, 2, 1], vec![2, 3, 0], vec![3, 4, 1]];
-        let answer = vec![Some(1), Some(2), None, None, Some(3), Some(4)].into_tree();
+        let answer = TreeNode::from_string("1,2,null,null,3,4");
         let solution = Solution::create_binary_tree(descriptions);
         assert_eq!(solution, answer);
     }

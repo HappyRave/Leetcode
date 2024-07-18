@@ -29,66 +29,31 @@ mod tests {
 
     #[test]
     fn test_1() {
-        let root = TreeNode::new(1);
-        let root = Some(Rc::new(RefCell::new(root)));
+        let root = TreeNode::from_string("1");
         assert!(Solution::evaluate_tree(root));
     }
 
     #[test]
     fn test_2() {
-        let root = TreeNode::new(0);
-        let root = Some(Rc::new(RefCell::new(root)));
+        let root = TreeNode::from_string("0");
         assert!(!Solution::evaluate_tree(root));
     }
 
     #[test]
     fn test_3() {
-        let root = TreeNode::new(2);
-        let left = TreeNode::new(1);
-        let right = TreeNode::new(0);
-        let root = Some(Rc::new(RefCell::new(root)));
-        root.as_ref().unwrap().borrow_mut().left = Some(Rc::new(RefCell::new(left)));
-        root.as_ref().unwrap().borrow_mut().right = Some(Rc::new(RefCell::new(right)));
+        let root = TreeNode::from_string("2,1,0");
         assert!(Solution::evaluate_tree(root));
     }
 
     #[test]
     fn test_4() {
-        let root = TreeNode::new(2);
-        let left = TreeNode::new(1);
-        let right = TreeNode::new(1);
-        let root = Some(Rc::new(RefCell::new(root)));
-        root.as_ref().unwrap().borrow_mut().left = Some(Rc::new(RefCell::new(left)));
-        root.as_ref().unwrap().borrow_mut().right = Some(Rc::new(RefCell::new(right)));
+        let root = TreeNode::from_string("2,1,1");
         assert!(Solution::evaluate_tree(root));
     }
 
     #[test]
     fn test_6() {
-        let root = TreeNode::new(2);
-        let left = TreeNode::new(1);
-        let right = TreeNode::new(2);
-        let right_left = TreeNode::new(0);
-        let right_right = TreeNode::new(1);
-        let root = Some(Rc::new(RefCell::new(root)));
-        root.as_ref().unwrap().borrow_mut().left = Some(Rc::new(RefCell::new(left)));
-        root.as_ref().unwrap().borrow_mut().right = Some(Rc::new(RefCell::new(right)));
-        root.as_ref()
-            .unwrap()
-            .borrow()
-            .right
-            .as_ref()
-            .unwrap()
-            .borrow_mut()
-            .left = Some(Rc::new(RefCell::new(right_left)));
-        root.as_ref()
-            .unwrap()
-            .borrow()
-            .right
-            .as_ref()
-            .unwrap()
-            .borrow_mut()
-            .right = Some(Rc::new(RefCell::new(right_right)));
+        let root = TreeNode::from_string("2,1,2,null,null0,1");
         assert!(Solution::evaluate_tree(root));
     }
 }

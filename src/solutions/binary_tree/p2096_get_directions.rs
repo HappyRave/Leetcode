@@ -55,17 +55,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::solutions::binary_tree::BinaryTreeExt;
 
     #[test]
     fn test_get_directions_basic() {
-        let tree = vec![Some(5), Some(1), Some(2), Some(3), None, Some(6), Some(4)].into_tree();
+        let tree = TreeNode::from_string("5,1,2,3,null,6,4");
         assert_eq!(Solution::get_directions(tree, 3, 6), "UURL".to_string()); // cspell: disable-line
     }
 
     #[test]
     fn test_get_directions_basic_2() {
-        let tree = vec![Some(2), Some(1)].into_tree();
+        let tree = TreeNode::from_string("2,1");
         assert_eq!(Solution::get_directions(tree, 2, 1), "L".to_string());
     }
 }

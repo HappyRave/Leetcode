@@ -23,57 +23,19 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
-
     use super::*;
 
     #[test]
     fn test_bst_to_gst() {
-        let tree = vec![
-            Some(4),
-            Some(1),
-            Some(6),
-            Some(0),
-            Some(2),
-            Some(5),
-            Some(7),
-            None,
-            None,
-            None,
-            Some(3),
-            None,
-            None,
-            None,
-            Some(8),
-        ];
-        let root = tree.into_tree();
-        let tree = vec![
-            Some(30),
-            Some(36),
-            Some(21),
-            Some(36),
-            Some(35),
-            Some(26),
-            Some(15),
-            None,
-            None,
-            None,
-            Some(33),
-            None,
-            None,
-            None,
-            Some(8),
-        ];
-        let res = tree.into_tree();
-        assert_eq!(Solution::bst_to_gst(root), res);
+        let tree = TreeNode::from_string("4,1,6,0,2,5,7,null,null,null,3,null,null,null,8");
+        let res = TreeNode::from_string("30,36,21,36,35,26,15,null,null,null,33,null,null,null,8");
+        assert_eq!(Solution::bst_to_gst(tree), res);
     }
 
     #[test]
     fn test_bst_to_gst_2() {
-        let tree = vec![Some(0), None, Some(1)];
-        let root = tree.into_tree();
-        let tree = vec![Some(1), None, Some(1)];
-        let res = tree.into_tree();
-        assert_eq!(Solution::bst_to_gst(root), res);
+        let tree = TreeNode::from_string("0,null,1");
+        let res = TreeNode::from_string("1,null,1");
+        assert_eq!(Solution::bst_to_gst(tree), res);
     }
 }

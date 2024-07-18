@@ -39,28 +39,23 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
-
     use super::*;
 
     #[test]
     fn test_is_cousins() {
-        let tree = vec![Some(1), Some(2), Some(3), Some(4)];
-        let root = tree.into_tree();
-        assert!(!Solution::is_cousins(root, 4, 3));
+        let tree = TreeNode::from_string("1,2,3,4");
+        assert!(!Solution::is_cousins(tree, 4, 3));
     }
 
     #[test]
     fn test_is_cousins_2() {
-        let tree = vec![Some(1), Some(2), Some(3), None, Some(4), None, Some(5)];
-        let root = tree.into_tree();
-        assert!(Solution::is_cousins(root, 5, 4));
+        let tree = TreeNode::from_string("1,2,3,null,4,null,5");
+        assert!(Solution::is_cousins(tree, 5, 4));
     }
 
     #[test]
     fn test_is_cousins_3() {
-        let tree = vec![Some(1), Some(2), Some(3), None, Some(4)];
-        let root = tree.into_tree();
-        assert!(!Solution::is_cousins(root, 2, 3));
+        let tree = TreeNode::from_string("1,2,3,null,4");
+        assert!(!Solution::is_cousins(tree, 2, 3));
     }
 }

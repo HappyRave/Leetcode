@@ -45,39 +45,30 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::solutions::binary_tree::BinaryTreeExt;
+    use crate::solutions::binary_tree::OptionTreeNodeExt;
 
     use super::*;
 
     #[test]
     fn test_del_nodes() {
-        let root = vec![
-            Some(1),
-            Some(2),
-            Some(3),
-            Some(4),
-            Some(5),
-            Some(6),
-            Some(7),
-        ]
-        .into_tree();
+        let root = TreeNode::from_string("1,2,3,4,5,6,7");
         let to_delete = vec![3, 5];
         let mut result = Solution::del_nodes(root, to_delete);
-        let expected_tree = vec![Some(1), Some(2), None, Some(4)].into_tree();
-        let expected_tree_2 = vec![Some(6)].into_tree();
-        let expected_tree_3 = vec![Some(7)].into_tree();
+        let expected_tree = TreeNode::from_string("1,2,null,4");
+        let expected_tree_2 = TreeNode::from_string("6");
+        let expected_tree_3 = TreeNode::from_string("7");
         let mut expected = vec![expected_tree, expected_tree_2, expected_tree_3];
 
-        result.sort_by(|a, b| TreeNode::tree_size(a).cmp(&TreeNode::tree_size(b)));
-        expected.sort_by(|a, b| TreeNode::tree_size(a).cmp(&TreeNode::tree_size(b)));
+        result.sort_by_key(|a| a.get_size());
+        expected.sort_by_key(|a| a.get_size());
         assert_eq!(result, expected);
     }
 
     #[test]
     fn test_del_nodes_2() {
-        let root = vec![Some(1), Some(2), Some(4), None, Some(3)].into_tree();
+        let root = TreeNode::from_string("1,2,4,null,3");
         let to_delete = vec![3];
-        let expected_tree = vec![Some(1), Some(2), Some(4)].into_tree();
+        let expected_tree = TreeNode::from_string("1,2,4");
         let expected = vec![expected_tree];
         let result = Solution::del_nodes(root, to_delete);
         assert_eq!(result, expected);
