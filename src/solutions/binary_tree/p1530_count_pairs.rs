@@ -20,15 +20,11 @@ impl Solution {
                         .flat_map(|&l| right.iter().map(move |&r| l + r))
                         .filter(|&sum| sum <= distance)
                         .count() as i32;
-                    let mut result = Vec::new();
                     left.iter()
-                        .filter(|&l| l + 1 < distance)
-                        .for_each(|&l| result.push(l + 1));
-                    right
-                        .iter()
-                        .filter(|&r| r + 1 < distance)
-                        .for_each(|&r| result.push(r + 1));
-                    result
+                        .chain(right.iter())
+                        .map(|&x| x + 1)
+                        .filter(|&x| x < distance)
+                        .collect()
                 }
                 None => Vec::new(),
             }
