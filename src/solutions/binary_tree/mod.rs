@@ -4,6 +4,7 @@ pub mod p1038_bst_to_gst;
 pub mod p1110_del_nodes;
 pub mod p1325_remove_leaf_nodes;
 pub mod p1382_balance_bst;
+pub mod p1530_count_pairs;
 pub mod p2096_get_directions;
 pub mod p2196_create_binary_tree;
 pub mod p2331_evaluate_tree;
@@ -108,6 +109,31 @@ impl TreeNode {
             "".to_string(),
             false,
         );
+    }
+
+    fn from_string(s: &str) -> Option<Rc<RefCell<TreeNode>>> {
+        let mut iter = s.split(',');
+        let root = iter
+            .next()
+            .and_then(|val| val.parse::<i32>().ok())
+            .map(|val| Rc::new(RefCell::new(TreeNode::new(val))));
+        let mut queue = std::collections::VecDeque::new();
+        if let Some(root) = root.as_ref() {
+            queue.push_back(Rc::clone(root));
+        }
+        while let Some(node) = queue.pop_front() {
+            if let Some(val) = iter.next().and_then(|v| v.parse::<i32>().ok()) {
+                let left = Rc::new(RefCell::new(TreeNode::new(val)));
+                node.borrow_mut().left = Some(Rc::clone(&left));
+                queue.push_back(left);
+            }
+            if let Some(val) = iter.next().and_then(|v| v.parse::<i32>().ok()) {
+                let right = Rc::new(RefCell::new(TreeNode::new(val)));
+                node.borrow_mut().right = Some(Rc::clone(&right));
+                queue.push_back(right);
+            }
+        }
+        root
     }
 }
 
@@ -433,5 +459,12 @@ mod tests {
         let tree = vec![Some(5), Some(1), Some(4), None, None, Some(3), Some(6)];
         let root = tree.into_tree();
         assert!(!root.as_ref().unwrap().borrow().is_search_tree());
+    }
+
+    #[test]
+    fn test_tree_from_string() {
+        let string_tree = TreeNode::from_string("1,2,3,null,4");
+        let tree = vec![Some(1), Some(2), Some(3), None, Some(4)].into_tree();
+        assert_eq!(string_tree, tree);
     }
 }
