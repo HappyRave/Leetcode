@@ -75,7 +75,7 @@ mod tests {
         let row_conditions = vec![vec![1, 2], vec![3, 2]];
         let col_conditions = vec![vec![2, 1], vec![3, 2]];
         let result = Solution::build_matrix(k, row_conditions, col_conditions);
-        let expected = vec![vec![3, 0, 0], vec![0, 0, 1], vec![0, 2, 0]];
+        let expected = vec![vec![0, 0, 1], vec![3, 0, 0], vec![0, 2, 0]];
         assert_eq!(result, expected);
     }
 
