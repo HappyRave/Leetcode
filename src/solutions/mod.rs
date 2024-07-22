@@ -6,6 +6,7 @@ pub mod linked_lists;
 pub mod matrix;
 pub mod misc;
 pub mod simulation;
+pub mod sorting;
 pub mod stack;
 pub mod string;
 pub mod subset;
