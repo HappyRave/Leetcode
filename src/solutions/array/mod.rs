@@ -26,6 +26,7 @@ pub mod p3075_maximum_happiness_sum;
 pub mod p330_min_patches;
 pub mod p344_reverse_string;
 pub mod p350_intersect;
+pub mod p391_is_rectangle_cover;
 pub mod p409_longest_palindrome;
 pub mod p502_find_maximized_capital;
 pub mod p506_find_relative_rank;
