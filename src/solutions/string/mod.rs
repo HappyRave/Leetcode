@@ -4,3 +4,4 @@ pub mod p2124_check_string;
 pub mod p2185_prefix_count;
 pub mod p2284_largest_word_count;
 pub mod p726_count_of_atoms;
+pub mod p2976_minimum_cost;

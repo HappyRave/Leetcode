@@ -19,6 +19,8 @@ trait ArrayStringExt {
     fn to_matrix(self) -> Vec<Vec<i32>>;
     fn remove_matching_brackets(self) -> Self;
     fn split_matrix(&self) -> impl Iterator<Item = String>;
+    fn to_string_vec(self) -> Vec<String>;
+    fn to_char_vec(self) -> Vec<char>;
 }
 
 impl ArrayStringExt for &str {
@@ -52,6 +54,22 @@ impl ArrayStringExt for &str {
                     s.to_string()
                 }
             })
+    }
+
+    fn to_string_vec(self) -> Vec<String> {
+        self.remove_matching_brackets()
+            .split(',')
+            .filter(|s| !s.is_empty())
+            .map(|s| s.trim_matches('"').to_string())
+            .collect()
+    }
+
+    fn to_char_vec(self) -> Vec<char> {
+        self.remove_matching_brackets()
+            .split(',')
+            .filter(|s| !s.is_empty())
+            .filter_map(|s| s.trim_matches('"').chars().next())
+            .collect()
     }
 }
 
@@ -128,6 +146,54 @@ mod tests {
         let s = "[[1,2,3],[4,5,6],[7,8,9]]";
         let result = s.split_matrix().collect::<Vec<_>>();
         let expected = vec!["[1,2,3]", "[4,5,6]", "[7,8,9]"];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_string_vec() {
+        let s = "[\"a\",\"b\",\"c\",\"d\"]";
+        let result = s.to_string_vec();
+        let expected = vec!["a", "b", "c", "d"];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_string_vec_2() {
+        let s = "[\"alice\"]";
+        let result = s.to_string_vec();
+        let expected = vec!["alice"];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_string_vec_3() {
+        let s = "[]";
+        let result = s.to_string_vec();
+        let expected: Vec<String> = vec![];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_char_vec() {
+        let s = "[\"a\",\"b\",\"c\",\"d\"]";
+        let result = s.to_char_vec();
+        let expected = vec!['a', 'b', 'c', 'd'];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_char_vec_2() {
+        let s = "[\"a\"]";
+        let result = s.to_char_vec();
+        let expected = vec!['a'];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_to_char_vec_3() {
+        let s = "[]";
+        let result = s.to_char_vec();
+        let expected: Vec<char> = vec![];
         assert_eq!(result, expected);
     }
 }
