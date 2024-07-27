@@ -12,7 +12,6 @@ impl Solution {
         let char_a = 'a' as usize;
         let mut path = vec![vec![no_path; 26]; 26];
 
-        (0..26).for_each(|i| path[i][i] = 0);
         cost.iter().enumerate().for_each(|(i, &cost)| {
             let o = original[i] as usize - char_a;
             let c = changed[i] as usize - char_a;
@@ -20,6 +19,7 @@ impl Solution {
         });
 
         (0..26).for_each(|k| {
+            path[k][k] = 0;
             (0..26).for_each(|i| {
                 (0..26).for_each(|j| {
                     path[i][j] = path[i][j].min(path[i][k] + path[k][j]);
