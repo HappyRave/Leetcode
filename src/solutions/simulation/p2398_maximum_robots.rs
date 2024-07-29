@@ -7,32 +7,53 @@ impl Solution {
         for i in 0..running_costs.len() {
             prefix_sum[i + 1] = prefix_sum[i] + running_costs[i] as i64;
         }
-        let mut charge_time_stack = std::collections::VecDeque::<usize>::new();
-        charge_time_stack.push_back(charge_times[0] as usize);
+
+        let mut max_charge_time_deque = std::collections::VecDeque::<usize>::from(vec![0]);
         let (mut left, mut right, mut max_robots) = (0, 1, 0);
+
         while left < right && right <= n {
             let k = right - left;
-
-            let total_charge_time = *charge_time_stack.iter().max().unwrap() as i64;
             let total_running_cost: i64 = prefix_sum[right] - prefix_sum[left];
-            if total_charge_time + total_running_cost * k as i64 <= budget {
-                max_robots = max_robots.max(k);
-                if right < n {
-                    charge_time_stack.push_back(charge_times[right] as usize);
+            let max_charge_time = charge_times[max_charge_time_deque[0]] as i64;
+
+            // Check if the current window is within the budget
+            if max_charge_time + total_running_cost * k as i64 <= budget {
+                max_robots = max_robots.max((k) as i32);
+
+                // Expand the window
+                while let Some(&prev) = max_charge_time_deque.back() {
+                    if right < n && charge_times[right] >= charge_times[prev] {
+                        max_charge_time_deque.pop_back();
+                    } else {
+                        break;
+                    }
                 }
+                max_charge_time_deque.push_back(right);
                 right += 1;
             } else {
                 left += 1;
-                charge_time_stack.pop_front();
-                if left == right {
-                    if right < n {
-                        charge_time_stack.push_back(charge_times[right] as usize);
+                while let Some(&prev) = max_charge_time_deque.front() {
+                    if prev < left {
+                        max_charge_time_deque.pop_front();
+                    } else {
+                        break;
                     }
+                }
+                if left == right && right < n {
+                    while let Some(&prev) = max_charge_time_deque.back() {
+                        if right < n && charge_times[right] >= charge_times[prev] {
+                            max_charge_time_deque.pop_back();
+                        } else {
+                            break;
+                        }
+                    }
+                    max_charge_time_deque.push_back(right);
                     right += 1;
                 }
             }
         }
-        max_robots as i32
+
+        max_robots
     }
 }
 
