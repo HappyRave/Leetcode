@@ -24,7 +24,7 @@ impl Solution {
         fn is_valid_answer(
             equation: &[(char, usize, usize)],
             answer: &[usize],
-            words: &Vec<String>,
+            words: &[String],
             result: &str,
         ) -> bool {
             fn word_to_num(
@@ -32,7 +32,7 @@ impl Solution {
                 equation: &[(char, usize, usize)],
                 answer: &[usize],
             ) -> usize {
-                let mut word = word.clone().to_string();
+                let mut word = word.to_string();
                 for i in 0..equation.len() {
                     let (c, _, _) = equation[i];
                     let num = answer[i];
