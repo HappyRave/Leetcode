@@ -6,5 +6,6 @@ pub mod p2124_check_string;
 pub mod p2185_prefix_count;
 pub mod p2284_largest_word_count;
 pub mod p2976_minimum_cost;
+pub mod p3144_minimum_substrings_in_partition;
 pub mod p3210_get_encrypted_string;
 pub mod p726_count_of_atoms;
