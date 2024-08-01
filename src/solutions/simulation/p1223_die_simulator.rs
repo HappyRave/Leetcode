@@ -34,8 +34,6 @@ impl Solution {
             }
         }
 
-        println!("{:?}", dp);
-
         (dp[n - 1].iter().sum::<i64>() % 1_000_000_007) as i32
     }
 }
