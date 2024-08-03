@@ -1,5 +1,6 @@
 pub mod p1190_reverse_parentheses;
 pub mod p1307_is_solvable;
+pub mod p151_reverse_words;
 pub mod p1653_minimum_deletions;
 pub mod p1717_maximum_gain;
 pub mod p2124_check_string;
