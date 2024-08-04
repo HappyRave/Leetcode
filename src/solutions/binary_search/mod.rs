@@ -7,6 +7,7 @@ pub mod p278_first_bad_version;
 pub mod p33_search_rotated;
 pub mod p34_search_range;
 pub mod p35_search_insert;
+pub mod p367_is_perfect_square;
 pub mod p374_guess_number;
 pub mod p436_find_right_interval;
 pub mod p704_search;
