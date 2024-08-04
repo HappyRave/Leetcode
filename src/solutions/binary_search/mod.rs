@@ -1,5 +1,6 @@
 pub mod p1146_snapshot_array;
 pub mod p1351_count_negatives;
+pub mod p1508_range_sum;
 pub mod p153_find_min;
 pub mod p154_find_min_with_duplicates;
 pub mod p278_first_bad_version;
