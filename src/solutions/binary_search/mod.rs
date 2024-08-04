@@ -13,6 +13,7 @@ pub mod p367_is_perfect_square;
 pub mod p374_guess_number;
 pub mod p436_find_right_interval;
 pub mod p441_arrange_coins;
+pub mod p540_single_non_duplicate;
 pub mod p69_my_sqrt;
 pub mod p704_search;
 pub mod p744_next_greatest_letter;
