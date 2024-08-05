@@ -1,6 +1,7 @@
 pub mod array;
 pub mod binary_search;
 pub mod binary_tree;
+pub mod design;
 pub mod graph;
 pub mod linked_lists;
 pub mod math;
