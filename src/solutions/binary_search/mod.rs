@@ -4,6 +4,7 @@ pub mod p1508_range_sum;
 pub mod p1539_find_kth_positive;
 pub mod p153_find_min;
 pub mod p154_find_min_with_duplicates;
+pub mod p2439_minimize_array_value;
 pub mod p275_h_index;
 pub mod p278_first_bad_version;
 pub mod p33_search_rotated;
