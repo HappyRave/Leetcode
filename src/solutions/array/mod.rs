@@ -17,6 +17,7 @@ pub mod p1509_min_difference;
 pub mod p1552_max_distance;
 pub mod p1608_special_array;
 pub mod p1944_can_see_persons_count;
+pub mod p198_rob;
 pub mod p2037_min_moves_to_seat;
 pub mod p2134_min_swaps;
 pub mod p2225_find_winners;
