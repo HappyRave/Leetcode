@@ -1,4 +1,5 @@
 pub mod p1380_lucky_numbers;
+pub mod p1536_min_swaps;
 pub mod p1605_restore_matrix;
 pub mod p2373_largest_local;
 pub mod p2392_build_matrix;
