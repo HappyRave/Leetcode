@@ -7,6 +7,7 @@ pub mod p2053_kth_distinct;
 pub mod p2124_check_string;
 pub mod p2185_prefix_count;
 pub mod p2284_largest_word_count;
+pub mod p273_number_to_words;
 pub mod p2976_minimum_cost;
 pub mod p3016_minimum_pushes;
 pub mod p3144_minimum_substrings_in_partition;
