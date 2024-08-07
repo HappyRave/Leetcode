@@ -5,29 +5,20 @@ impl Solution {
         let n = grid.len();
         let mut zero_counts: Vec<(usize, usize)> = vec![(0, 0); n];
         for (i, row) in grid.iter().enumerate() {
-            let mut count = 0;
-            for cell in row {
-                if *cell == 0 {
-                    count += 1;
-                } else {
-                    count = 0;
-                }
-            }
-            zero_counts[i] = (i, count);
+            zero_counts[i] = (i, row.iter().rev().take_while(|&x| *x == 0).count());
         }
-        println!("{:?}", zero_counts);
         let mut result = 0;
-        for row_count in (1..n).rev() {
+        for target in (1..n).rev() {
             let mut found = false;
-            println!("row_count: {}", row_count);
             for (i, zero_count) in zero_counts.iter_mut().enumerate() {
-                zero_count.0 += 1;
-                if zero_count.1 >= row_count {
-                    println!("found {} at {}", row_count, i);
-                    result += n - row_count - 1 + zero_count.0;
+                if zero_count.1 >= target {
+                    let index = n - target - 1;
+                    result += zero_count.0 - index;
                     zero_counts.remove(i);
                     found = true;
                     break;
+                } else {
+                    zero_count.0 += 1;
                 }
             }
             if !found {
@@ -68,6 +59,19 @@ mod tests {
         assert_eq!(
             Solution::min_swaps_2(vec![vec![1, 0, 0], vec![1, 1, 0], vec![1, 1, 1]]),
             0
+        );
+    }
+
+    #[test]
+    fn test_min_swaps_4() {
+        assert_eq!(
+            Solution::min_swaps_2(vec![
+                vec![0, 1, 1, 0],
+                vec![1, 1, 1, 0],
+                vec![1, 1, 1, 0],
+                vec![1, 0, 0, 0]
+            ]),
+            -1
         );
     }
 }
