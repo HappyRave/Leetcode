@@ -6,5 +6,6 @@ pub mod p2392_build_matrix;
 pub mod p2577_minimum_time;
 pub mod p2812_maximum_safeness_factor;
 pub mod p835_largest_overlap;
+pub mod p840_num_magic_squares_inside;
 pub mod p861_matrix_score;
 pub mod p885_spiral_matrix_iii;
