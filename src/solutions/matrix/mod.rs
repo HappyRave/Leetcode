@@ -10,3 +10,4 @@ pub mod p835_largest_overlap;
 pub mod p840_num_magic_squares_inside;
 pub mod p861_matrix_score;
 pub mod p885_spiral_matrix_iii;
+pub mod p959_regions_by_slashes;
