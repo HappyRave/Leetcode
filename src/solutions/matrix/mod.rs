@@ -1,5 +1,6 @@
 pub mod p1380_lucky_numbers;
 pub mod p1536_min_swaps;
+pub mod p1568_min_days;
 pub mod p1605_restore_matrix;
 pub mod p1895_largest_magic_square;
 pub mod p2373_largest_local;
