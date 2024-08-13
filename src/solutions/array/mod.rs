@@ -34,6 +34,7 @@ pub mod p344_reverse_string;
 pub mod p350_intersect;
 pub mod p391_is_rectangle_cover;
 pub mod p409_longest_palindrome;
+pub mod p40_combination_sum2;
 pub mod p502_find_maximized_capital;
 pub mod p506_find_relative_rank;
 pub mod p523_check_subarray_sum;
