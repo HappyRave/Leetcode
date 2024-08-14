@@ -39,6 +39,7 @@ pub mod p502_find_maximized_capital;
 pub mod p506_find_relative_rank;
 pub mod p523_check_subarray_sum;
 pub mod p648_replace_words;
+pub mod p719_smallest_distance_pair;
 pub mod p75_sort_colors;
 pub mod p769_max_chunks_to_sorted;
 pub mod p786_kth_smallest_prime_fraction;
