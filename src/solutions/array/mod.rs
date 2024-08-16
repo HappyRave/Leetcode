@@ -38,6 +38,7 @@ pub mod p40_combination_sum2;
 pub mod p502_find_maximized_capital;
 pub mod p506_find_relative_rank;
 pub mod p523_check_subarray_sum;
+pub mod p624_max_distance;
 pub mod p648_replace_words;
 pub mod p719_smallest_distance_pair;
 pub mod p75_sort_colors;
