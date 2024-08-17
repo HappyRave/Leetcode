@@ -3,6 +3,7 @@ pub mod p1536_min_swaps;
 pub mod p1568_min_days;
 pub mod p1605_restore_matrix;
 pub mod p1895_largest_magic_square;
+pub mod p1937_max_points;
 pub mod p2373_largest_local;
 pub mod p2392_build_matrix;
 pub mod p2577_minimum_time;
