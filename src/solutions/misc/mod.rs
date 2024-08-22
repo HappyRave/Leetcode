@@ -5,6 +5,7 @@ pub mod p1550_three_consecutive_odds;
 pub mod p260_single_number;
 pub mod p2729_is_fascinating;
 pub mod p3110_score_of_string;
+pub mod p476_find_complement;
 pub mod p552_check_record;
 pub mod p611_triangle_number;
 pub mod p633_judge_square_sum;
