@@ -4,6 +4,7 @@ pub mod p1038_bst_to_gst;
 pub mod p1110_del_nodes;
 pub mod p1325_remove_leaf_nodes;
 pub mod p1382_balance_bst;
+pub mod p145_postorder_traversal;
 pub mod p1530_count_pairs;
 pub mod p2096_get_directions;
 pub mod p2196_create_binary_tree;
