@@ -152,6 +152,27 @@ mod tests {
     }
 
     #[test]
+    fn test_matrix() {
+        let s = "[[4,1,-1],[2,0,-1],[0,3,-1],[4,3,-1]]";
+        let result = s.to_matrix();
+        let expected = vec![
+            vec![4, 1, -1],
+            vec![2, 0, -1],
+            vec![0, 3, -1],
+            vec![4, 3, -1],
+        ];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_matrix_2() {
+        let s = "[]";
+        let result = s.to_matrix();
+        let expected: Vec<Vec<i32>> = vec![];
+        assert_eq!(result, expected);
+    }
+
+    #[test]
     fn test_to_string_vec() {
         let s = "[\"a\",\"b\",\"c\",\"d\"]";
         let result = s.to_string_vec();
