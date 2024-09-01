@@ -19,6 +19,7 @@ pub mod p1608_special_array;
 pub mod p1944_can_see_persons_count;
 pub mod p1959_min_space_wasted_k_resizing;
 pub mod p198_rob;
+pub mod p2022_construct2_d_array;
 pub mod p2037_min_moves_to_seat;
 pub mod p2134_min_swaps;
 pub mod p2225_find_winners;
