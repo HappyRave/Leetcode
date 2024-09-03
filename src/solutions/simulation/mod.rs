@@ -3,6 +3,7 @@ pub mod p1518_num_water_bottles;
 pub mod p1701_average_waiting_time;
 pub mod p1823_find_the_winner;
 pub mod p1894_chalk_replacer;
+pub mod p1945_get_lucky;
 pub mod p2318_distinct_sequences;
 pub mod p2398_maximum_robots;
 pub mod p2582_pass_the_pillow;
