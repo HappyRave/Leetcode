@@ -116,7 +116,7 @@ impl TreeNode {
         pretty_print(&self.wrap(), "".to_string(), false);
     }
 
-    fn from_string(s: &str) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn from_string(s: &str) -> Option<Rc<RefCell<TreeNode>>> {
         let mut iter = s.split(',');
         fn next_val(iter: &mut std::str::Split<char>) -> Option<i32> {
             iter.next().and_then(|val| val.parse::<i32>().ok())
