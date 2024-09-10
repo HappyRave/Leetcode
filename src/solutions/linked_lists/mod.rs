@@ -4,6 +4,7 @@ pub mod p2181_merge_nodes;
 pub mod p2326_spiral_matrix;
 pub mod p234_is_palindrome_list;
 pub mod p2487_remove_nodes;
+pub mod p2807_insert_greatest_common_divisors;
 pub mod p2816_double_it;
 pub mod p2_add_two_numbers_linked;
 pub mod p3217_modified_list;
