@@ -12,6 +12,7 @@ pub mod p140_word_break;
 pub mod p1438_longest_subarray;
 pub mod p1460_can_be_equal;
 pub mod p1482_min_days;
+pub mod p1497_can_arrange;
 pub mod p14_longest_common_prefix;
 pub mod p1509_min_difference;
 pub mod p1552_max_distance;
