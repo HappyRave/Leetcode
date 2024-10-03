@@ -16,6 +16,7 @@ pub mod p1497_can_arrange;
 pub mod p14_longest_common_prefix;
 pub mod p1509_min_difference;
 pub mod p1552_max_distance;
+pub mod p1590_min_subarray;
 pub mod p1608_special_array;
 pub mod p1944_can_see_persons_count;
 pub mod p1959_min_space_wasted_k_resizing;
