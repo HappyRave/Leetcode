@@ -1,7 +1,7 @@
 use crate::solutions::Solution;
 
 impl Solution {
-    pub fn min_swaps(nums: Vec<i32>) -> i32 {
+    pub fn min_swaps_3(nums: Vec<i32>) -> i32 {
         let n = nums.len();
         let ones = nums.iter().sum::<i32>() as usize;
 
@@ -29,36 +29,36 @@ mod tests {
     #[test]
     fn test_min_swaps() {
         let nums = vec![0, 1, 0, 1, 1, 0, 0];
-        assert_eq!(Solution::min_swaps(nums), 1);
+        assert_eq!(Solution::min_swaps_3(nums), 1);
     }
 
     #[test]
     fn test_min_swaps_2() {
         let nums = vec![0, 1, 1, 1, 0, 0, 1, 1, 0];
-        assert_eq!(Solution::min_swaps(nums), 2);
+        assert_eq!(Solution::min_swaps_3(nums), 2);
     }
 
     #[test]
     fn test_min_swaps_3() {
         let nums = vec![1, 1, 0, 0, 1];
-        assert_eq!(Solution::min_swaps(nums), 0);
+        assert_eq!(Solution::min_swaps_3(nums), 0);
     }
 
     #[test]
     fn test_min_swaps_4() {
         let nums = vec![1];
-        assert_eq!(Solution::min_swaps(nums), 0);
+        assert_eq!(Solution::min_swaps_3(nums), 0);
     }
 
     #[test]
     fn test_min_swaps_5() {
         let nums = vec![0, 0, 0];
-        assert_eq!(Solution::min_swaps(nums), 0);
+        assert_eq!(Solution::min_swaps_3(nums), 0);
     }
 
     #[test]
     fn test_min_swaps_6() {
         let nums = vec![1, 1, 1, 0, 0, 1, 0, 1, 1, 0];
-        assert_eq!(Solution::min_swaps(nums), 1);
+        assert_eq!(Solution::min_swaps_3(nums), 1);
     }
 }

@@ -23,14 +23,14 @@ mod tests {
 
     #[test]
     fn test_min_length() {
-        let s = "ABFCACDB";
+        let s = "ABFCACDB"; // cspell: disable-line
         let result = 2;
         assert_eq!(Solution::min_length(s.to_string()), result);
     }
 
     #[test]
     fn test_min_length_2() {
-        let s = "ACBBD";
+        let s = "ACBBD"; // cspell: disable-line
         let result = 5;
         assert_eq!(Solution::min_length(s.to_string()), result);
     }
