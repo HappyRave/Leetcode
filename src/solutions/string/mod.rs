@@ -17,3 +17,4 @@ pub mod p3210_get_encrypted_string;
 pub mod p564_nearest_palindromic;
 pub mod p664_strange_printer;
 pub mod p726_count_of_atoms;
+pub mod p921_min_add_to_make_valid;
