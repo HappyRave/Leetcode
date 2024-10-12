@@ -27,6 +27,7 @@ pub mod p2037_min_moves_to_seat;
 pub mod p2134_min_swaps;
 pub mod p2225_find_winners;
 pub mod p2255_count_prefixes;
+pub mod p2406_min_groups;
 pub mod p2659_count_operations_to_empty_array;
 pub mod p2678_count_seniors;
 pub mod p2799_count_complete_subarrays;
