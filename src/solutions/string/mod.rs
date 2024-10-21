@@ -2,6 +2,7 @@ pub mod p1190_reverse_parentheses;
 pub mod p1307_is_solvable;
 pub mod p1405_longest_diverse_string;
 pub mod p151_reverse_words;
+pub mod p1593_max_unique_split;
 pub mod p1653_minimum_deletions;
 pub mod p1717_maximum_gain;
 pub mod p1963_min_swaps;
