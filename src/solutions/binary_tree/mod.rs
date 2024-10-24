@@ -11,6 +11,7 @@ pub mod p2196_create_binary_tree;
 pub mod p2331_evaluate_tree;
 pub mod p2583_kth_largest_level_sum;
 pub mod p2641_replace_value_in_tree;
+pub mod p951_flip_equiv;
 pub mod p979_distribute_coins;
 pub mod p993_is_cousins;
 
