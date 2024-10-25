@@ -1,4 +1,5 @@
 pub mod p1190_reverse_parentheses;
+pub mod p1233_remove_subfolders;
 pub mod p1307_is_solvable;
 pub mod p1405_longest_diverse_string;
 pub mod p151_reverse_words;
