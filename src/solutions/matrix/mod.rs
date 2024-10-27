@@ -1,3 +1,4 @@
+pub mod p1277_count_squares;
 pub mod p1380_lucky_numbers;
 pub mod p1536_min_swaps;
 pub mod p1568_min_days;
