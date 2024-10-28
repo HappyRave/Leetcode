@@ -3,6 +3,7 @@ pub mod binary_search;
 pub mod binary_tree;
 pub mod bit_manipulation;
 pub mod design;
+pub mod dynamic_programming;
 pub mod graph;
 pub mod linked_lists;
 pub mod math;
