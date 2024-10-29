@@ -35,7 +35,7 @@ impl Solution {
         }
 
         let mut res = 0;
-        let mut diff = i64::max_value();
+        let mut diff = i64::MAX;
         for i in 0..(len / 2) + 1 {
             for j in -1..=1 {
                 let palindrome = get_palindrome(n + j * 10_i64.pow(i as u32));

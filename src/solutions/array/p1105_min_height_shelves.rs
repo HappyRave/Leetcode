@@ -16,7 +16,7 @@ impl Solution {
             }
             let mut width = 0;
             let mut height = 0;
-            let mut min_height = std::i32::MAX;
+            let mut min_height = i32::MAX;
             for i in idx..books.len() {
                 width += books[i][0];
                 if width > shelf_width {

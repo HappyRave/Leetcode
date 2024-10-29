@@ -56,7 +56,7 @@ impl Solution {
             graph[edge[1] as usize].push((edge[0] as usize, i));
         }
 
-        let mut distances = vec![[std::i32::MAX; 2]; n as usize];
+        let mut distances = vec![[i32::MAX; 2]; n as usize];
         run_dijkstra(&graph, &mut edges, &mut distances, source as usize, 0, 0);
         let difference = target - distances[destination as usize][0];
         if difference < 0 {

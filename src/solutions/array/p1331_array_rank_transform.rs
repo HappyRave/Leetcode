@@ -19,7 +19,7 @@ impl Solution {
         let mut sorted_map = arr.iter().enumerate().collect::<Vec<_>>();
         sorted_map.sort_unstable_by_key(|&(_, v)| v);
         let mut rank = 0;
-        let mut prev = std::i32::MIN;
+        let mut prev = i32::MIN;
         let mut result = vec![0; arr.len()];
         for (i, &v) in sorted_map.iter() {
             if v != prev {

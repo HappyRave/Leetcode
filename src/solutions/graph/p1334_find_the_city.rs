@@ -3,7 +3,7 @@ use crate::solutions::Solution;
 impl Solution {
     pub fn find_the_city(n: i32, edges: Vec<Vec<i32>>, distance_threshold: i32) -> i32 {
         let n = n as usize;
-        let mut dist = vec![vec![std::i32::MAX; n]; n];
+        let mut dist = vec![vec![i32::MAX; n]; n];
         (0..n).for_each(|i| {
             dist[i][i] = 0;
         });
@@ -14,11 +14,11 @@ impl Solution {
         }
         for k in 0..n {
             for i in 0..n {
-                if dist[i][k] == std::i32::MAX {
+                if dist[i][k] == i32::MAX {
                     continue;
                 }
                 for j in 0..n {
-                    if dist[k][j] == std::i32::MAX {
+                    if dist[k][j] == i32::MAX {
                         continue;
                     }
                     dist[i][j] = dist[i][j].min(dist[i][k] + dist[k][j]);
