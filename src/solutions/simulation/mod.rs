@@ -7,6 +7,7 @@ pub mod p1945_get_lucky;
 pub mod p2028_missing_rolls;
 pub mod p2318_distinct_sequences;
 pub mod p2398_maximum_robots;
+pub mod p2463_minimum_total_distance;
 pub mod p2582_pass_the_pillow;
 pub mod p2751_survived_robots_healths;
 pub mod p3168_minimum_chairs;
