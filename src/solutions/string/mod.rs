@@ -6,6 +6,7 @@ pub mod p151_reverse_words;
 pub mod p1593_max_unique_split;
 pub mod p1653_minimum_deletions;
 pub mod p1717_maximum_gain;
+pub mod p1957_make_fancy_string;
 pub mod p1963_min_swaps;
 pub mod p2053_kth_distinct;
 pub mod p2124_check_string;
