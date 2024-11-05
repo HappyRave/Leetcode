@@ -14,6 +14,7 @@ pub mod p2185_prefix_count;
 pub mod p2284_largest_word_count;
 pub mod p2696_min_length;
 pub mod p273_number_to_words;
+pub mod p2914_min_changes;
 pub mod p2938_minimum_steps;
 pub mod p2976_minimum_cost;
 pub mod p3016_minimum_pushes;
